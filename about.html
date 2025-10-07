@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>About Us</title>
+<style>
+  body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #e0f7fa;
+    color: #004d40;
+    margin: 0;
+    padding: 0;
+  }
+  nav {
+    background: #00796b;
+    padding: 16px;
+    text-align: center;
+  }
+  nav a {
+    color: white;
+    margin: 0 24px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-bottom: 3px;
+    transition: border-bottom 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    border-bottom: 3px solid #26a69a;
+  }
+  .container {
+    max-width: 900px;
+    background: white;
+    box-shadow: 0 10px 30px rgba(0, 77, 64, 0.25);
+    margin: 50px auto;
+    border-radius: 14px;
+    padding: 40px 35px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+  }
+  .content {
+    flex: 1 1 400px;
+  }
+  h1 {
+    font-weight: 900;
+    color: #00796b;
+    margin-bottom: 20px;
+    letter-spacing: 1.3px;
+    font-size: 2.4rem;
+  }
+  p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #004d40;
+  }
+  .image-box {
+    flex: 1 1 400px;
+    text-align: center;
+  }
+  .image-box img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 18px rgba(0, 77, 64, 0.2);
+  }
+  footer {
+    text-align: center;
+    background: #b2dfdb;
+    padding: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: #004d40;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+  @media(max-width: 700px){
+    .container {
+      flex-direction: column;
+      padding: 20px;
+    }
+    h1 {
+      font-size: 2rem;
+    }
+    .content, .image-box {
+      flex: 1 1 100%;
+    }
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="employee.html">Directory</a>
+  <a href="about.html" class="active">About</a>
+</nav>
+<div class="container">
+  <div class="content">
+    <h1>About Our Company</h1>
+    <p>We foster innovation and collaboration for all employees.</p>
+    <p>Empowering our team to excel and contribute meaningfully to our mission.</p>
+  </div>
+  <div class="image-box">
+    <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Team Collaboration" />
+  </div>
+</div>
+<footer>
+  <p>&copy; 2025 Company Name. All rights reserved.</p>
+</footer>
+</body>
+</html>
