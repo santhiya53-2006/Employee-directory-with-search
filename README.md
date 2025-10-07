@@ -1,6 +1,4 @@
-Here is a README template text covering a project with Home Page, Search Page, and About Us Page:
 
-***
 
 Home Page, Search Page, and About Us Page
 
