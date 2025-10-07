@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Employee Directory with Search Button</title>
+<style>
+  body {
+    background: #e0f7fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0; padding: 0;
+    color: #004d40;
+  }
+  .container {
+    background: #fff;
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 77, 64, 0.2);
+  }
+  h1 {
+    font-weight: 800;
+    margin-bottom: 20px;
+    color: #00796b;
+    text-align: center;
+    letter-spacing: 1.2px;
+  }
+  #searchInput {
+    width: 75%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    border: 2px solid #26a69a;
+    border-radius: 30px 0 0 30px;
+    outline: none;
+    box-shadow: inset 0 2px 5px rgba(38, 166, 154, 0.15);
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  #searchInput:focus {
+    border-color: #00796b;
+    box-shadow: 0 0 10px #00796b;
+  }
+  #searchButton {
+    width: 23%;
+    font-size: 1rem;
+    border: 2px solid #26a69a;
+    border-left: none;
+    border-radius: 0 30px 30px 0;
+    background: #26a69a;
+    color: white;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  #searchButton:hover {
+    background: #004d40;
+  }
+  table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 12px;
+    margin-top: 20px;
+  }
+  thead th {
+    background: linear-gradient(135deg, #26a69a 0%, #004d40 100%);
+    color: white;
+    padding: 18px 15px;
+    border-radius: 12px 12px 0 0;
+    cursor: pointer;
+    user-select: none;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 12px rgba(38, 166, 154, 0.5);
+    text-align: left;
+  }
+  tbody tr {
+    background: #e0f2f1;
+    border-radius: 10px;
+    box-shadow: 0 3px 8px rgba(38, 166, 154, 0.15);
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    cursor: default;
+  }
+  tbody tr:hover {
+    background: #b2dfdb;
+    transform: scale(1.03);
+    box-shadow: 0 6px 15px rgba(38, 166, 154, 0.35);
+  }
+  tbody td {
+    padding: 16px;
+    color: #004d40;
+    font-weight: 600;
+  }
+  tbody tr:nth-child(even) {
+    background: #c8e6c9;
+  }
+  tbody tr:nth-child(even):hover {
+    background: #a5d6a7;
+  }
+  .pagination {
+    margin-top: 28px;
+    text-align: center;
+  }
+  .pagination button {
+    background-image: linear-gradient(135deg, #26a69a, #004d40);
+    border: none;
+    color: white;
+    padding: 10px 18px;
+    margin: 0 8px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 1rem;
+    box-shadow: 0 3px 10px rgba(38, 166, 154, 0.5);
+    transition: background-image 0.4s ease;
+  }
+  .pagination button:hover:not(:disabled) {
+    background-image: linear-gradient(135deg, #004d40, #26a69a);
+  }
+  .pagination button:disabled {
+    background-color: #a7c4bc;
+    box-shadow: none;
+    cursor: not-allowed;
+    color: #004d40;
+  }
+  nav {
+    background: #00796b;
+    padding: 16px;
+    text-align: center;
+  }
+  nav a {
+    color: white;
+    margin: 0 24px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    padding-bottom: 3px;
+    transition: border-bottom 0.3s ease;
+  }
+  nav a:hover, nav a.active {
+    border-bottom: 3px solid #26a69a;
+  }
+  footer {
+    text-align: center;
+    padding: 20px;
+    color: #004d40;
+    background: #b2dfdb;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-top: 40px;
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html">Home</a>
+  <a href="employee.html" class="active">Directory</a>
+  <a href="about.html">About</a>
+</nav>
+
+<div class="container">
+  <h1>Employee Directory</h1>
+  <div>
+    <input type="text" id="searchInput" placeholder="Search employees by name or department..." />
+    <button id="searchButton">Search</button>
+  </div>
+
+  <table id="employeeTable">
+    <thead>
+      <tr>
+        <th onclick="sortTable(0)">Name &#x25B2;&#x25BC;</th>
+        <th onclick="sortTable(1)">Department &#x25B2;&#x25BC;</th>
+        <th>Email</th>
+        <th>Phone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Alice Johnson</td><td>Human Resources</td><td>alice.johnson@example.com</td><td>555-1001</td></tr>
+      <tr><td>Bob Smith</td><td>Engineering</td><td>bob.smith@example.com</td><td>555-1002</td></tr>
+      <tr><td>Charlie Brown</td><td>Marketing</td><td>charlie.brown@example.com</td><td>555-1003</td></tr>
+      <tr><td>Dana White</td><td>Engineering</td><td>dana.white@example.com</td><td>555-1004</td></tr>
+      <tr><td>Eva Green</td><td>Human Resources</td><td>eva.green@example.com</td><td>555-1005</td></tr>
+      <tr><td>Fred Black</td><td>Marketing</td><td>fred.black@example.com</td><td>555-1006</td></tr>
+      <tr><td>Grace Lee</td><td>Engineering</td><td>grace.lee@example.com</td><td>555-1007</td></tr>
+      <tr><td>Harry Wilson</td><td>Finance</td><td>harry.wilson@example.com</td><td>555-1008</td></tr>
+      <tr><td>Ivy Martinez</td><td>Marketing</td><td>ivy.martinez@example.com</td><td>555-1009</td></tr>
+      <tr><td>Jake Miller</td><td>Finance</td><td>jake.miller@example.com</td><td>555-1010</td></tr>
+    </tbody>
+  </table>
+  <div class="pagination">
+    <button onclick="prevPage()" id="prevBtn" disabled>Previous</button>
+    <button onclick="nextPage()" id="nextBtn">Next</button>
+  </div>
+</div>
+
+<footer>
+  &copy; 2025 Company Name. All rights reserved.
+</footer>
+
+<script>
+  let currentPage = 1;
+  const rowsPerPage = 4;
+  let currentSortColumn = 0;
+  let sortOrder = [true, true];
+
+  function displayTable() {
+    const input = document.getElementById('searchInput').value.toLowerCase();
+    const table = document.getElementById('employeeTable');
+    const tbody = table.querySelector('tbody');
+    let rows = Array.from(tbody.rows);
+
+    rows.forEach(row => {
+      const name = row.cells[0].textContent.toLowerCase();
+      const department = row.cells[1].textContent.toLowerCase();
+      row.style.display = (name.includes(input) || department.includes(input)) ? '' : 'none';
+    });
+
+    rows = rows.filter(row => row.style.display === '');
+
+    const ascending = sortOrder[currentSortColumn];
+    rows.sort((a, b) => {
+      const aText = a.cells[currentSortColumn].textContent.toLowerCase();
+      const bText = b.cells[currentSortColumn].textContent.toLowerCase();
+      if (aText < bText) return ascending ? -1 : 1;
+      if (aText > bText) return ascending ? 1 : -1;
+      return 0;
+    });
+
+    tbody.innerHTML = '';
+
+    const start = (currentPage - 1) * rowsPerPage;
+    const paginatedRows = rows.slice(start, start + rowsPerPage);
+    paginatedRows.forEach(row => tbody.appendChild(row));
+
+    document.getElementById('prevBtn').disabled = currentPage === 1;
+    document.getElementById('nextBtn').disabled = (start + rowsPerPage) >= rows.length;
+  }
+
+  function searchEmployees() {
+    currentPage = 1;
+    displayTable();
+  }
+
+  document.getElementById('searchButton').addEventListener('click', searchEmployees);
+  document.getElementById('searchInput').addEventListener('keyup', event => {
+    if (event.key === 'Enter') {
+      searchEmployees();
+    }
+  });
+
+  function nextPage() {
+    if (!document.getElementById('nextBtn').disabled) {
+      currentPage++;
+      displayTable();
+    }
+  }
+
+  function prevPage() {
+    if (!document.getElementById('prevBtn').disabled) {
+      currentPage--;
+      displayTable();
+    }
+  }
+
+  function sortTable(colIndex) {
+    if (currentSortColumn === colIndex) {
+      sortOrder[colIndex] = !sortOrder[colIndex];
+    } else {
+      currentSortColumn = colIndex;
+    }
+    displayTable();
+  }
+
+  window.onload = () => {
+    displayTable();
+  };
+</script>
+</body>
+</html>
